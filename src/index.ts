@@ -1,20 +1,13 @@
-/**
- * Public entry point of @trysac/design-token-sync.
- *
- * Replace this placeholder with the utility's real API. Keep every export documented and covered by tests.
- */
+export type { TokenErrorCode } from "./errors.js";
+export { TokenError } from "./errors.js";
+export type { ParseOptions } from "./parser.js";
 
-/**
- * Builds a greeting for `name`.
- *
- * @param name - Who to greet. Surrounding whitespace is ignored.
- * @returns The greeting, for example `"Hello, Ada!"`.
- * @throws {TypeError} When `name` is empty after trimming.
- */
-export function greet(name: string): string {
-  const trimmed = name.trim();
-  if (trimmed === "") {
-    throw new TypeError("name must not be empty");
-  }
-  return `Hello, ${trimmed}!`;
-}
+export { parseTokens } from "./parser.js";
+export { resolveTokens } from "./resolve.js";
+export type { CssOptions } from "./serializers/css.js";
+
+export { toCss } from "./serializers/css.js";
+export type { TsOptions } from "./serializers/ts.js";
+
+export { toTs } from "./serializers/ts.js";
+export type { ResolvedToken, TokenEntry, TokenSet, TokenType } from "./types.js";

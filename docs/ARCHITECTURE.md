@@ -1,30 +1,28 @@
 # Architecture
 
-## Overview
-
-`@trysac/design-token-sync` is a small, dependency-free TypeScript library published to npm as ES modules with type
-declarations. Build CSS custom properties and a typed TypeScript module from Design Tokens (DTCG) JSON, resolving aliases, inheriting types and checking outputs stay in sync
+This library is a single-purpose converter for DTCG design tokens.
 
 ## Modules
 
 | Module | Responsibility |
 |---|---|
-| `src/index.ts` | Public API. Everything consumers import is exported from here. |
+| `src/errors.ts` | `TokenError` with machine-readable `code` union. |
+| `src/types.ts` | Public types and `TokenSet` container. |
+| `src/parser.ts` | Recursive descent parsing with byte/depth limits, type inheritance, alias detection. |
+| `src/resolve.ts` | Alias resolution with cycle detection (`alias_cycle`), missing target (`alias_unresolved`), type check (`type_mismatch`). |
+| `src/serializers/css.ts` | CSS custom properties output, alias reference or resolved. |
+| `src/serializers/ts.ts` | Typed TypeScript object output. |
+| `src/cli.ts` | CLI entry point (build/check), uses `node:fs/promises`. |
 
-Add a row when you add a module. Internal modules are not re-exported unless they are part of the public API.
+## Design decisions
 
-## Boundaries
+- **Dependency-free**: no runtime packages, uses standard library and built-in `TextEncoder` for byte counting.
+- **Deterministic output**: tokens sorted by dotted path; CSS variable names derive from path segments.
+- **Strict validation**: every input has a named size/depth limit; invalid values throw typed `TokenError`.
+- **Alias model**: an alias token stores its direct target path; resolution follows chains with a resolution stack.
+- **Output modes**: CSS can emit `var(--target)` (reference) or resolved values; TypeScript always emits resolved values.
+- **CLI separation**: parser/serializers are pure and Node-independent; only `cli.ts` imports `node:fs/promises`.
 
-- No runtime dependencies by default; any addition is justified in [STACK.md](STACK.md).
-- No I/O at import time. Functions are pure unless their documentation says otherwise.
-- Errors are thrown as built-in error types (`TypeError`, `RangeError`) with actionable messages.
+## Future work
 
-## Build and distribution
-
-`npm run build` compiles `src/` to `dist/` with `tsconfig.build.json`. Only `dist/` is published
-(`files` in `package.json`).
-
-## Decisions
-
-Architectural decisions are recorded in [decisions/](decisions/), starting with
-[0001](decisions/0001-record-architecture-decisions.md).
+The DTCG format includes composite types (shadow, typography, border, gradient), themes/modes, and color space conversion. These are out of scope for this release to keep the library small and focused.
