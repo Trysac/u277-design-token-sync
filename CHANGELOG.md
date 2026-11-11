@@ -9,4 +9,5 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 
 ### Added
 
+- Added `parseTokens`, `resolveTokens`, `toCss`, `toTs`, `TokenError`, and CLI `run` for DTCG token conversion.
 - Initial project structure from the factory utility template.

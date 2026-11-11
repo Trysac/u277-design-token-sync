@@ -1,17 +1,15 @@
 # @trysac/design-token-sync
 
-> Build CSS custom properties and a typed TypeScript module from Design Tokens (DTCG) JSON, resolving aliases, inheriting types and checking outputs stay in sync TypeScript library for Node.js 20+, published as ES modules with type declarations. MIT.
+> Build CSS custom properties and a typed TypeScript module from Design Tokens (DTCG) JSON, resolving aliases, inheriting types and checking outputs stay in sync. TypeScript library for Node.js 20+, no runtime dependencies. MIT.
 
 ## Docs
 
-- [README](README.md): problem, installation and usage example
-- [AGENTS.md](AGENTS.md): commands, folder map, conventions and limits for contributors and agents
-- [Architecture](docs/ARCHITECTURE.md): modules and boundaries
-- [Testing](docs/TESTING.md): how tests and coverage work
-- [Decisions](docs/decisions/0001-record-architecture-decisions.md): architecture decision records
+- [README](README.md): problem, installation, usage, public API, CLI and limits
+- [Architecture](docs/ARCHITECTURE.md): modules and design decisions
+- [Testing](docs/TESTING.md): test files and covered behavior
+- [Security](docs/SECURITY.md): defended and not-defended threat model
 
 ## Optional
 
-- [Stack](docs/STACK.md): tools used and discarded
+- [Stack](docs/STACK.md): tools used by the source and tests
 - [Project record](docs/PROJECT.md): objective, scope, timeline and effort metrics
-- [Changelog](CHANGELOG.md)
