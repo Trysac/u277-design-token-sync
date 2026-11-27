@@ -1,6 +1,5 @@
 # @trysac/design-token-sync
 
-[![npm version](https://img.shields.io/npm/v/@trysac/design-token-sync.svg)](https://www.npmjs.com/package/@trysac/design-token-sync)
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 
 Convert Design Tokens Community Group (DTCG) JSON into CSS custom properties and a type-safe TypeScript module. The parser validates token values, inherits `$type` from groups, resolves aliases with cycle and type checks, and the CLI has a `--check` mode for CI.
@@ -16,9 +15,15 @@ Convert Design Tokens Community Group (DTCG) JSON into CSS custom properties and
 
 ## Installation
 
-```bash
-npm install @trysac/design-token-sync
+Not published to npm yet. Build it from a clone, then install it from the local path:
+
+```sh
+git clone https://github.com/Trysac/u277-design-token-sync.git
+cd u277-design-token-sync && npm ci && npm run build
+cd ../your-project && npm install ../u277-design-token-sync
 ```
+
+Imports keep the package name: `import { ... } from "@trysac/design-token-sync"`.
 
 ## Quick start
 
